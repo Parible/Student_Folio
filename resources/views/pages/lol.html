@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <style>
+        body {
+            width: 100%;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #770000;
+            height: 100px;
+        }
+        .center {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .nav {
+            background-color: #dcd9c0;
+            height: 800px;
+            width: 120px;
+        }
+        .section {
+            background-color: #ffed53;
+            height: 800px;
+            width: 400px;
+        }
+        .aside {
+            background-color: #009906;
+            height: 400px;
+            width: 180px;
+        }
+        .footer {
+            position: absolute;
+            background-color: #221122;
+            width: 100%;
+            height: 100px;
+            bottom: 0;
+        }
+    </style>
+    <body>
+        <!-- ////////////////////////////////////////// -->
+
+        <header class="header"></header>
+        <div class="center">
+            <nav class="nav"></nav>
+            <section class="section"></section>
+            <div class="aside"></div>
+        </div>
+        <fooetr class="footer"></fooetr>
+
+        <!-- <form>
+            <label for="name">Name:</label>
+            <input type="text" class="name" />
+            <br /><br />
+
+            <label for="email">Email:</label>
+            <input type="email" class="email" />
+            <br /><br />
+
+            <label for="name">Password:</label>
+            <input type="password" class="password" />
+            <br /><br />
+
+            <label for="name">Confirm Password:</label>
+            <input type="password" class="confirm_password" />
+            <br /><br />
+
+            <input type="submit" value="Submit" class="onSubmit" />
+        </form> -->
+        <!-- 
+        <script>
+            const name = document.querySelector(".name");
+            const email = document.querySelector(".email");
+            const password = document.querySelector(".password");
+            const confirm_password =
+                document.querySelector(".confirm_password");
+            const onSubmit = document.querySelector(".onSubmit");
+
+            const validateForm = () => {
+                if (
+                    !name.value ||
+                    !email.value ||
+                    !password.value ||
+                    !confirm_password.value
+                ) {
+                    alert("Please all fields are required!");
+                } else if (password.value != confirm_password.value) {
+                    alert("Passwords does not match!");
+                } else {
+                    console.log(`Name: ${name.value} \nEmail: ${email.value} `);
+                    alert("Form Submitted Successfully!");
+                }
+            };
+
+            onSubmit.addEventListener("click", function (e) {
+                e.preventDefault();
+                validateForm();
+            });
+        </script> -->
+    </body>
+</html>
