@@ -15,21 +15,20 @@
         <div
             class="i flex hidden items-center justify-around bg-gradient-to-tr from-blue-800 to-purple-700 md:block md:p-48">
             <div>
-                <h1 class="font-sans text-3xl font-bold text-white">StudentFolio</h1>
-                <h1 class="font-sans text-2xl font-bold text-white">Management System</h1>
-                {{-- <p class="mt-1 text-white">Sign Up Today</p> --}}
-                <a href="/register""><button  type="submit"
+                <h1 class="font-sans text-4xl font-bold text-white">AdminLogin</h1>
+                <p class="mt-1 text-white">Sign Up Today</p>
+                <a href="/admin/register"><button type="submit" 
                     class="mt-4 mb-2 block w-28 rounded-2xl bg-white py-2 font-bold text-indigo-800">Sign Up</button></a>
             </div>
         </div>
         <div class="flex w-1/2 items-center justify-center bg-white md:p-48">
 
             {{-- FORM START --}}
-            <form method="POST" action="/login" class="bg-white">
+            <form method="POST" action="/admin/login" class="bg-white">
               @csrf
 
 
-                <h1 class="mb-1 text-2xl font-bold text-gray-800">Login</h1>
+                <h1 class="mb-1 text-2xl font-bold text-gray-800">AdminLogin</h1>
                 <p class="mb-7 text-sm font-normal text-gray-600">Welcome</p>
                 <div class="mb-4 flex items-center rounded-2xl border-2 py-2 px-3">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
@@ -37,7 +36,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                     </svg>
-                    <input class="border-none pl-2 outline-none" type="email" name="email" id=""
+                    <input class="border-none pl-2 outline-none" type="email" name="email" id="email"
                         autocomplete="email" placeholder="Email Address" value="{{old('email')}}"/>
 
                 </div>
@@ -63,8 +62,8 @@
 
                 <button type="submit"
                     class="mt-4 mb-2 block w-full rounded-2xl bg-indigo-600 py-2 font-semibold text-white">Login</button>
-                <span class="ml-2 cursor-pointer text-sm hover:text-blue-500">Forgot Password ?</span>
-                <h1 class="mt-3">Don't have an account? <a href="/register" class="text-blue-800">Register</a></h1>
+                {{-- <span class="ml-2 cursor-pointer text-sm hover:text-blue-500">Forgot Password ?</span> --}}
+                <h1 class="mt-3">Don't have an account? <a href="/admin/register" class="text-blue-800">Register</a></h1>
             </form>
 
             {{-- FORM ENDS --}}

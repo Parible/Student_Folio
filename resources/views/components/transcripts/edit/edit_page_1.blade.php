@@ -11,15 +11,24 @@
                 <p>Resolution: 1:1(eg. 200*200)</p>
                 <p>Accepted Image type files: jpg or jpeg</p>
             </div>
+            
+                
+          
                 
                 <div class="mt-10">
 
                     <h1 class="text-1xl font-bold text-black">Passport Picture</h1>
                     <p class="mt-2">Upload a file</p>
                     <div class="mt-2 flex items-center space-x-6">
-                        <form enctype="multipart/form-data" action="/transcript" method="POST">
 
+                        @foreach ($transcripts as $transcript )
+                            
+                       
+                        <form enctype="multipart/form-data" action="/user/edit_page_1" method="POST">
+
+                            {{-- action="/user/edit_page_1/{{$transcript->id}} --}}
                             @csrf
+                            "@method('PUT')"
                             <label for="image" class="block">
 
                                 <input type="file" name="image" 
@@ -47,23 +56,26 @@
                         {{-- <img class="h-6 w-6" src="{{ asset('/images/svgs/student-svgrepo-com.svg')}}" alt=""> --}}
                         <h1 class="text-2xl font-bold">Personal Information</h1>
                     </h2>
-                    <p class="mt-1 text-xs leading-6 text-gray-400"> Complete application form clearly</p>
+                    <p class="mt-1 text-xs leading-6 text-gray-400">Complete application form clearly</p>
 
                     {{-- FORM START --}}
-
+                   
+                        
+                  
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-3">
                             <label for="firstname" class="block text-sm font-medium leading-6 text-gray-900">First
                                 name</label>
                             <div class="mt-2">
                                 <input type="text" name="firstname" id="firstname" autocomplete="given-name"
-                                    placeholder="Eg. Vivian" value="{{old('firstname')}}"
+                                    placeholder="Eg. Vivian" value="{{$transcript->firstname}}"
                                     class="block w-full rounded-md border-0 py-1.5 text-center text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 @error('firstname')
                                     <p class="mt-1 bg-white text-xs font-bold text-red-500">{{ $message }}</p>
                                 @enderror
 
                             </div>
+                             
                         </div>
 
                         <div class="sm:col-span-3">
@@ -71,7 +83,7 @@
                                 names</label>
                             <div class="mt-2">
                                 <input type="text" name="lastname" id="lastname" placeholder="Eg. Korkor Amisemeku"
-                                    autocomplete="family-name" value="{{old('lastname')}}"
+                                    autocomplete="family-name" value="{{$transcript->lastname}}"
                                     class="block w-full rounded-md border-0 py-1.5 text-center text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 @error('lastname')
                                     <p class="mt-1 bg-white text-xs font-bold text-red-500">Other names field is
@@ -87,6 +99,7 @@
                                 <select id="programme" name="programme" autocomplete="programme" value="{{old('programme')}}" placeholder="Eg. Bsc Computer Science"
                                     class="block w-full rounded-md border-0 py-1.5 text-center text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                     <option value="">--Choose--</option>
+                                    
                                      <option value="CE" {{ old('programme') == 'CE' ? 'selected' : '' }}>BSc. Computer Engineering</option>
                                      <option value="BIT" {{ old('programme') == 'BIT' ? 'selected' : '' }}>Bsc. Information Technology</option>
                                      <option value="MC" {{ old('programme') == 'MC' ? 'selected' : '' }}>BSc. Mobile Computing</option>
@@ -145,7 +158,7 @@
                                 ID</label>
                             <div class="mt-2">
                                 <input type="text" name="sid" id="sid" autocomplete="sid"
-                                    placeholder="Eg. 22112200** " value="{{old('sid')}}"
+                                    placeholder="Eg. 22112200** " value="{{$transcript->sid}}"
                                     class="block w-full rounded-md border-0 py-1.5 text-center text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 @error('sid')
                                     <p class="mt-1 bg-white text-xs font-bold text-red-500">{{ $message }}</p>
@@ -163,7 +176,7 @@
                                     <option value="Tesano" {{ old('campus') == 'Tesano' ? 'selected' : '' }}>Accra Main Campus (Tesano)</option>
                                     <option value="Kumasi" {{ old('campus') == 'Kumasi' ? 'selected' : '' }}>Kumasi</option>
                                     <option value="Koforidua" {{ old('campus') == 'Koforidua' ? 'selected' : '' }}>Koforidua</option>
-                                    {{-- <option value="Tesano" {{ old('campus') == 'Tesano' ? 'selected' : '' }}>Tesano</option> --}}
+                                    <option value="Tesano" {{ old('campus') == 'Tesano' ? 'selected' : '' }}>Tesano</option>
                                    
                                 </select>
                                 @error('campus')
@@ -176,7 +189,7 @@
                             <label for="contact"
                                 class="block text-sm font-medium leading-6 text-gray-900">Contact</label>
                             <div class="mt-2">
-                                <input type="text" name="contact" id="contact" autocomplete="tel" value="{{old('contact')}}" placeholder="0546798456"
+                                <input type="text" name="contact" id="contact" autocomplete="tel" value="{{$transcript->contact}}" placeholder="0546798456"
                                     class="block w-full rounded-md border-0 py-1.5 text-center text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 @error('contact')
                                     <p class="mt-1 bg-white text-xs font-bold text-red-500">{{ $message }}</p>
@@ -188,7 +201,7 @@
                             <label for="dob" class="block text-sm font-medium leading-6 text-gray-900">Date
                                 of birth</label>
                             <div class="mt-2">
-                                <input type="date" name="dob" id="dob" autocomplete="bday" value="{{old('dob')}}"
+                                <input type="date" name="dob" id="dob" autocomplete="bday" value="{{$transcript->dob}}"
                                     class="block w-full rounded-md border-0 py-1.5 text-center text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 @error('dob')
                                     <p class="mt-1 bg-white text-xs font-bold text-red-500">{{ $message }}</p>
@@ -643,7 +656,7 @@
                                 
                                     <input
                                         class="mb-1 w-full rounded-md border border-gray-200 px-3 py-2 transition-colors focus:border-indigo-500 focus:outline-none"
-                                       name="transaction_id" value="{{old('transaction_id')}}" placeholder="Eg. 25571768954" type="text" />
+                                       name="transaction_id" value="{{$transcript->transaction_id}}" placeholder="Eg. 25571768954" type="text" />
                                        @error('transaction_id')
                                             <p class="mt-1 bg-white text-xs font-bold text-red-500">{{ $message }}</p>
                   
@@ -660,11 +673,13 @@
                                         Back
                                     </button></a> --}}
 
-                                <a href="/track"><button type="submit"
+                                <button type="submit"
                                         class="mb-4 mt-6 w-48 transform rounded-lg bg-indigo-500 px-6 py-2 font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                                         Submit & Review
-                                    </button></a>
+                                    </button>
                             </form>
+                            @break
+                             @endforeach
                         </div>
                     </div>
                 </div>

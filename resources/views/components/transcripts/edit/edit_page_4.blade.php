@@ -6,21 +6,14 @@
 
             <div class="mx-auto -mt-10 max-w-md p-16">
 
-                @foreach ($transcripts as $transcript)
+                @foreach ($transcripts->sortByDesc('created_at')->take(1) as $transcript)
                     <img class="h-32 w-64 rounded-lg drop-shadow-lg"
-                        src="{{ asset('storage/' . $transcript->image) }}"
+                        src="{{ $transcript->image ? asset('storage/' . $transcript->image) : asset('./images/avatar-default-svgrepo-com.svg') }}"
                         style="height: 250px;" alt="">
-                        @break
                 @endforeach
 
                 <h1 class="mx-auto p-2 text-xl font-bold"> Passport Picture</h1>
                 <div class="mx-auto items-center p-2 text-sm text-gray-500">
-
-                    <div>
-                    @if (auth()->check())
-                    <p>Hi, {{ auth()->user()->name }}👋</p>
-                    @endif
-                    </div>
 
                 </div>
 
@@ -39,11 +32,10 @@
                         <h2 class="text-base font-semibold leading-7 text-gray-900">
                             <h1 class="text-2xl font-bold">Review</h1>
                         </h2>
-                        {{-- <p class="mt-1 text-sm leading-6 text-gray-600">Verify your details to avoid rejection</p> --}}
+                        <p class="mt-1 text-sm leading-6 text-gray-600">Verify your details to avoid rejection</p>
 
-                        @foreach ($transcripts as $transcript)
+                        @foreach ($transcripts->sortByDesc('created_at')->take(1) as $transcript)
                             <h6 class="font-bold">Personal-Information</h6>
-                            
 
                             <div class="py-2">
                                 <span>First Name: </span> <span
@@ -67,20 +59,19 @@
 
                     <div class="mt-6 space-y-2">
 
-                        @foreach ($transcripts as $transcript)
+                        @foreach ($transcripts->sortByDesc('created_at')->take(1) as $transcript)
                             <h6 class="font-bold">Identification</h6>
                             <div class="py-2">
-                                {{-- <span>Type of ID Card: </span> <span
+                                <span>Type of ID Card: </span> <span
                                     class="font-bold text-blue-500">{{ $transcript->id_type }}</span><br>
                                 <span>ID Card Number: </span> <span
                                     class="font-bold text-blue-500">{{ $transcript->id_number }}</span><br>
-                                 --}}
+                                {{-- <span>Destination Address:  </span> <span>{{ $transcript->address }}</span><br> --}}
                                 <span>Type of Request(s): </span> <span
                                     class="font-bold text-blue-500">{{ $transcript->request_type }}</span><br>
                                 <span >Transaction ID: <span  class="font-bold text-blue-500">{{$transcript->transaction_id}}</span> </span> 
                                     
                             </div>
-                            @break
                         @endforeach
 
                     </div>
@@ -89,14 +80,14 @@
 
             </div>
 
-            {{-- <a href="/payment"><button type="button"
+            <a href="/payment"><button type="button"
                     class="mb-4 mt-6 transform rounded-lg  bg-indigo-500 px-6 py-2 font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                     Back
-                </button></a> --}}
+                </button></a>
 
-            <a href="/track"><button
+            <a href="/payment"><button
                     class="mb-4 mt-6 transform rounded-lg  bg-indigo-500 px-6 py-2 font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                   Track
+                    Proceed to Payment
                 </button></a>
 
         </div>
@@ -106,6 +97,5 @@
 <!-- CARD ENDS -->
 </div>
 </div>
-
 
 </x-layout>

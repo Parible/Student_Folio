@@ -1,4 +1,4 @@
-<x-layout>
+{{-- <x-layout>
 <img src="/images/avatar-default-svgrepo-com.svg" style="height: 250px;" alt="">
 <h1 class="p-8 font-bold text-xl"> Image Requirements</h1>
 <div class="p-16 -mt-20 items-center text-sm">
@@ -22,4 +22,4 @@
 </div>
 
 </div>
-</x-layout>
+</x-layout> --}}
